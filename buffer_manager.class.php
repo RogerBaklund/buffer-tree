@@ -20,7 +20,7 @@ instantiation:
 $bm = new buffer_manager();
 $bm = new buffer_manager('document');  # override default buffer name '_default'
 
-note: undo() must only be used with the most recently added buffer, instead of calling leave()
+note: undo() can only be used with the most recently added buffer, instead of calling leave()
 
 */
 
