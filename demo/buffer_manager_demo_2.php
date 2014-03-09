@@ -1,6 +1,6 @@
 <?php  
 
-include 'buffer_manager.class.php';
+include '../buffer_manager.class.php';
 
 class HTML_Tags extends buffer_manager {
   # a typical usage pattern:
@@ -33,6 +33,8 @@ class HTML_Tags extends buffer_manager {
 }
 
 $bm = new HTML_Tags('document');
+
+$doc_node = $bm->current();  # used for debug dump below
 
 $bm->out('<html><head>');
 
@@ -70,15 +72,19 @@ $bm->out('<p>The HTML_Tags class extends the buffer_manager class, '.
 $bm->out('<p>Note that these are just examples of how to '.
          'use buffers as templates for HTML, use your imagination!</p>');
 
+$bm->out('<h2>Debug dump:</h2><p>Overview of buffer structure for debug purpouses.</p>');
+$bm->NamedTag('DebugDump','div');
+
 $bm->WriteTo('style', 'p {font-family:Verdana, sans-serif;}');
 
 $bm->WriteTo('Source',highlight_file(__FILE__,true));
 
 $bm->leave();                       # leave 'body'
-
 $bm->out('</body></html>');
 
+# final adjustments before output 
 $bm->WriteTo('ProfilePic','930196.jpg');
+$bm->WriteTo('DebugDump',$doc_node->dump()); 
 
 echo (string) $bm->current();  
 

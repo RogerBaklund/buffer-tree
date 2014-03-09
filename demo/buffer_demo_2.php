@@ -1,6 +1,6 @@
 <?php 
 
-include 'buffer.class.php';
+include '../buffer.class.php';
 
 $doc = new buffer("document");
 $doc->append(array(
@@ -87,7 +87,7 @@ if(isset($_GET['src'])) {
   highlight_file(__FILE__);  
 } elseif(isset($_GET['dump'])) {
   echo '<a href="?">Back</a><br />';
-  $doc->dump(0,true);  
+  $doc->dump(0,true,true);  
 } else echo (string) $doc;
 
 ?>

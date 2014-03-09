@@ -1,6 +1,6 @@
 <?php 
 
-include 'buffer.class.php';
+include '../buffer.class.php';
 
 function ColSet($sep="\t"){ return new buffer('ColSet',$sep); }
 function RowSet($sep="\n"){ return new buffer('RowSet',$sep); }

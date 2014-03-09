@@ -21,7 +21,7 @@ TODO: make tests for undo()
 
 */
 
-include 'buffer_manager.class.php';
+include '../buffer_manager.class.php';
 
 $bm = new buffer_manager('document');
 
