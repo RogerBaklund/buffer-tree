@@ -11,7 +11,7 @@ The following methods are defined:
     clear()         -- clear this buffer
     replace($data)  -- replace this buffer with new data
     find($name)     -- find a named buffer within this buffer
-    dump()          -- make visual output of this buffer (for debuging)
+    dump()          -- make visual output of this buffer (for debugging)
     __toString()    -- output buffer content as a string
 
 The second class `buffer_manager` has methods for managing a stack of buffers.
@@ -34,5 +34,5 @@ classes can be used.
 Note that the first example is very different from the others. The buffer class is 
 very generic, it does not need to contain strings as values. However the __toString() 
 method will automatically cast each content member to a string. This means you can 
-use objects as data items, as long as they can be cast to strings, i.e. they have 
-a __toString() method.
+use any scalars and even objects as data items, as long as they can be cast to 
+strings, i.e. they have a __toString() method.
