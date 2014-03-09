@@ -63,19 +63,22 @@ class buffer {
     return implode($this->separator,$this->content);
   }
   
-  function dump($ind=0,$html=true) {  # for debugging
-    if(!$ind and $html) echo '<pre>';
+  function dump($ind=0,$html=true,$echo=false,$width=40) {  # for debugging
+  	$res = '';
+    if(!$ind and $html) $res .= '<pre>';
     if(!$this->content) 
-      echo str_repeat(' ',$ind).'@'.$this->name.' (empty)'."\n";
+      $res .= str_repeat(' ',$ind).'@'.$this->name.' (empty)'."\n";
     foreach($this->content as $c) {
       if(is_a($c,'buffer'))
-        $c->dump($ind+2);
+        $res .= $c->dump($ind+2,$html,false);
       else 
-        echo str_repeat(' ',$ind).'@'.$this->name.':'.
-             ($html ? htmlentities(substr($c,0,30)) : substr($c,0,30)).
-             (strlen($c)>30?'...':'')."\n";
+        $res .= str_repeat(' ',$ind).'@'.$this->name.':'.
+             ($html ? htmlentities(substr($c,0,$width)) : substr($c,0,$width)).
+             (strlen($c)>$width?'...':'')."\n";
     }
-    if(!$ind and $html) echo '</pre>';
+    if(!$ind and $html) $res .= '</pre>';
+    if($echo) echo $res;
+    else return $res;
   }
   
 }
