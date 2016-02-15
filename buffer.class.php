@@ -64,8 +64,8 @@ class buffer {
   }
   
   function dump($ind=0,$html=true,$echo=false,$width=40) {  # for debugging
-  	$res = '';
-    if(!$ind and $html) $res .= '<pre>';
+    $res = '';
+    if(!$ind && $html) $res .= '<pre>';
     if(!$this->content) 
       $res .= str_repeat(' ',$ind).'@'.$this->name.' (empty)'."\n";
     foreach($this->content as $c) {
@@ -74,9 +74,9 @@ class buffer {
       else 
         $res .= str_repeat(' ',$ind).'@'.$this->name.':'.
              ($html ? htmlentities(substr($c,0,$width)) : substr($c,0,$width)).
-             (strlen($c)>$width?'...':'')."\n";
+             (strlen($c) > $width ? '...' : '')."\n";
     }
-    if(!$ind and $html) $res .= '</pre>';
+    if(!$ind && $html) $res .= '</pre>';
     if($echo) echo $res;
     else return $res;
   }
